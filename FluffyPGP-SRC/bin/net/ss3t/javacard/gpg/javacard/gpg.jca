@@ -1,0 +1,3027 @@
+// converted by version 1.3
+// on Thu Dec 17 10:56:33 CST 2015
+
+.package net/ss3t/javacard/gpg {
+	.aid 0xD2:0x76:0x0:0x1:0x24:0x1:0x2:0x0:0x0:0x0:0x0:0x0:0x0:0x0:0x0;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.3;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.3;		//javacard/security
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x1 1.3;		//javacardx/crypto
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+	}
+
+	.applet {
+		0xD2:0x76:0x0:0x1:0x24:0x1:0x2:0x0:0x0:0x0:0x0:0x0:0x0:0x0:0x0:0x0 Gpg;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef byte[] Gpg/defaultPIN;
+		// 1
+		instanceFieldRef boolean Gpg/terminated;
+		// 2
+		instanceFieldRef byte[] Gpg/pinLength;
+		// 3
+		instanceFieldRef 0.9[] Gpg/pins;
+		// 4
+		instanceFieldRef boolean[] Gpg/pinSubmitted;
+		// 5
+		instanceFieldRef byte[] Gpg/commandChainingBuffer;
+		// 6
+		instanceFieldRef byte[] Gpg/privateDO1;
+		// 7
+		instanceFieldRef byte[] Gpg/privateDO2;
+		// 8
+		instanceFieldRef byte[] Gpg/privateDO3;
+		// 9
+		instanceFieldRef byte[] Gpg/privateDO4;
+		// 10
+		instanceFieldRef byte[] Gpg/loginData;
+		// 11
+		instanceFieldRef byte[] Gpg/url;
+		// 12
+		instanceFieldRef byte[] Gpg/name;
+		// 13
+		instanceFieldRef byte[] Gpg/language;
+		// 14
+		instanceFieldRef byte[] Gpg/sex;
+		// 15
+		instanceFieldRef byte[] Gpg/fingerprints;
+		// 16
+		instanceFieldRef byte[] Gpg/caFingerprints;
+		// 17
+		instanceFieldRef byte[] Gpg/generationDates;
+		// 18
+		instanceFieldRef byte[] Gpg/signatureCounter;
+		// 19
+		instanceFieldRef byte Gpg/pinValidForMultipleSignatures;
+		// 20
+		instanceFieldRef 1.16 Gpg/signatureKey;
+		// 21
+		instanceFieldRef 1.16 Gpg/confidentialityKey;
+		// 22
+		instanceFieldRef 1.16 Gpg/authenticationKey;
+		// 23
+		instanceFieldRef 2.1 Gpg/cipherRSA;
+		// 24
+		instanceFieldRef 1.14 Gpg/randomData;
+		// 25
+		virtualMethodRef 0.9.8([BSB)V;		// update([BSB)V
+		// 26
+		classRef 1.16;		// javacard/security/KeyPair
+		// 27
+		staticMethodRef 1.16.0(BS)V;		// javacard/security/KeyPair.<init>(BS)V
+		// 28
+		staticMethodRef 0.8.12(SB)[Z;		// javacard/framework/JCSystem.makeTransientBooleanArray(SB)[Z
+		// 29
+		classRef 0.9;		// javacard/framework/OwnerPIN
+		// 30
+		staticMethodRef 0.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 31
+		staticMethodRef 2.1.0(BZ)Ljavacardx/crypto/Cipher;;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+			.descriptor	Ljavacardx/crypto/Cipher;	2.1;
+
+		// 32
+		staticMethodRef 0.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 33
+		staticMethodRef 1.14.0(B)Ljavacard/security/RandomData;;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+			.descriptor	Ljavacard/security/RandomData;	1.14;
+
+		// 34
+		staticMethodRef 0.9.0(BB)V;		// javacard/framework/OwnerPIN.<init>(BB)V
+		// 35
+		virtualMethodRef 0.3.1()V;		// register()V
+		// 36
+		classRef Gpg;
+		// 37
+		staticMethodRef Gpg/<init>([BSB)V;
+		// 38
+		virtualMethodRef 0.10.1()[B;		// getBuffer()[B
+		// 39
+		staticMethodRef 0.16.4([BS)S;		// javacard/framework/Util.getShort([BS)S
+		// 40
+		virtualMethodRef 0.10.7()S;		// setOutgoing()S
+		// 41
+		virtualMethodRef 0.10.9(S)V;		// setOutgoingLength(S)V
+		// 42
+		virtualMethodRef 0.10.5([BSS)V;		// sendBytesLong([BSS)V
+		// 43
+		staticMethodRef 0.16.6([BSS)S;		// javacard/framework/Util.setShort([BSS)S
+		// 44
+		staticMethodRef 0.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 45
+		staticMethodRef 0.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 46
+		virtualMethodRef 0.3.3()Z;		// selectingApplet()Z
+		// 47
+		staticMethodRef 0.8.3()Ljavacard/framework/AID;;		// javacard/framework/JCSystem.getAID()Ljavacard/framework/AID;
+			.descriptor	Ljavacard/framework/AID;	0.6;
+
+		// 48
+		virtualMethodRef 0.6.3([BS)B;		// getBytes([BS)B
+		// 49
+		virtualMethodRef 0.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 50
+		staticMethodRef Gpg/verify(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 51
+		staticMethodRef Gpg/changeReferenceData(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 52
+		staticMethodRef Gpg/resetRetryCounter(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 53
+		staticMethodRef Gpg/getData(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 54
+		staticMethodRef Gpg/computeSignature(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 55
+		staticMethodRef Gpg/decrypt(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 56
+		staticMethodRef Gpg/generateAsymetricKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 57
+		staticMethodRef Gpg/putData(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 58
+		staticMethodRef Gpg/getChallenge(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 59
+		staticMethodRef Gpg/putKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 60
+		staticMethodRef Gpg/internalAuthenticate(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 61
+		staticMethodRef Gpg/terminateDF(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 62
+		staticMethodRef Gpg/activateFile(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 63
+		virtualMethodRef 0.10.6()S;		// setIncomingAndReceive()S
+		// 64
+		virtualMethodRef 0.9.2()B;		// getTriesRemaining()B
+		// 65
+		virtualMethodRef 0.9.1([BSB)Z;		// check([BSB)Z
+		// 66
+		staticMethodRef 0.8.1()V;		// javacard/framework/JCSystem.beginTransaction()V
+		// 67
+		staticMethodRef 0.8.2()V;		// javacard/framework/JCSystem.commitTransaction()V
+		// 68
+		staticMethodRef Gpg/updatePIN(S[BSB)V;
+		// 69
+		virtualMethodRef 0.9.4()Z;		// isValidated()Z
+		// 70
+		staticMethodRef 0.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 71
+		staticFieldRef byte[] Gpg/historicalBytes;
+		// 72
+		staticMethodRef Gpg/addShortTLV(S[B[BS)S;
+		// 73
+		staticMethodRef Gpg/addDiscretionaryDataObjects([BS)S;
+		// 74
+		staticFieldRef byte[] Gpg/extendedCapabilities;
+		// 75
+		staticFieldRef byte[] Gpg/algorithmAttributes;
+		// 76
+		staticMethodRef Gpg/getPWStatusBytes([BS)S;
+		// 77
+		virtualMethodRef Gpg/storeVariableLength(Ljavacard/framework/APDU;[BS)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 78
+		virtualMethodRef Gpg/storeFixedLength(Ljavacard/framework/APDU;[BSS)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 79
+		staticMethodRef 0.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 80
+		virtualMethodRef 1.16.3()Ljavacard/security/PublicKey;;		// getPublic()Ljavacard/security/PublicKey;
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+		// 81
+		classRef 1.9;		// javacard/security/RSAPublicKey
+		// 82
+		virtualMethodRef 1.16.2()Ljavacard/security/PrivateKey;;		// getPrivate()Ljavacard/security/PrivateKey;
+			.descriptor	Ljavacard/security/PrivateKey;	1.2;
+
+		// 83
+		classRef 1.7;		// javacard/security/RSAPrivateCrtKey
+		// 84
+		classRef 1.2;		// javacard/security/PrivateKey
+		// 85
+		classRef 1.3;		// javacard/security/PublicKey
+		// 86
+		staticMethodRef Gpg/getKey(B)Ljavacard/security/KeyPair;;
+			.descriptor	Ljavacard/security/KeyPair;	1.16;
+
+		// 87
+		staticMethodRef Gpg/addKeyPart(B[BSLjavacard/security/KeyPair;)S;
+			.descriptor	Ljavacard/security/KeyPair;	1.16;
+
+		// 88
+		staticFieldRef byte[] Gpg/expectedRSAKeyImportFormat;
+		// 89
+		staticMethodRef 0.16.0([BS[BSS)B;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+		// 90
+		staticMethodRef Gpg/addKeyPart([BS)S;
+		// 91
+		virtualMethodRef 1.14.1([BSS)V;		// generateData([BSS)V
+		// 92
+		virtualMethodRef 2.1.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 93
+		virtualMethodRef 2.1.1([BSS[BS)S;		// doFinal([BSS[BS)S
+		// 94
+		staticMethodRef 0.8.0()V;		// javacard/framework/JCSystem.abortTransaction()V
+		// 95
+		virtualMethodRef 1.16.1()V;		// genKeyPair()V
+	}
+
+	.class public final Gpg 0 extends 0.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			private final byte[] defaultPIN 0;		// [B
+			private final 0.9[] pins 1;		// [Ljavacard/framework/OwnerPIN;
+			private final boolean[] pinSubmitted 2;		// [Z
+			private final byte[] pinLength 3;		// [B
+			private final byte[] privateDO1 4;		// [B
+			private final byte[] privateDO2 5;		// [B
+			private final byte[] privateDO3 6;		// [B
+			private final byte[] privateDO4 7;		// [B
+			private final byte[] loginData 8;		// [B
+			private final byte[] url 9;		// [B
+			private final byte[] name 10;		// [B
+			private final byte[] language 11;		// [B
+			private final byte[] sex 12;		// [B
+			private final byte[] fingerprints 13;		// [B
+			private final byte[] caFingerprints 14;		// [B
+			private final byte[] generationDates 15;		// [B
+			private final byte[] signatureCounter 16;		// [B
+			private final byte[] commandChainingBuffer 17;		// [B
+			private final 1.16 signatureKey 18;		// Ljavacard/security/KeyPair;
+			private final 1.16 confidentialityKey 19;		// Ljavacard/security/KeyPair;
+			private final 1.16 authenticationKey 20;		// Ljavacard/security/KeyPair;
+			private final 2.1 cipherRSA 21;		// Ljavacardx/crypto/Cipher;
+			private final 1.14 randomData 22;		// Ljavacard/security/RandomData;
+			private byte pinValidForMultipleSignatures 23;		// B
+			private boolean terminated 24;		// Z
+			public static final byte CMD_VERIFY = 32;		// B
+			public static final byte CMD_CHANGE_REFERENCE_DATA = 36;		// B
+			public static final byte CMD_COMPUTE_PSO = 42;		// B
+			public static final byte CMD_RESET_RETRY_COUNTER = 44;		// B
+			public static final byte CMD_GENERATE_ASYMETRIC = 71;		// B
+			public static final byte CMD_GET_CHALLENGE = -124;		// B
+			public static final byte CMD_INTERNAL_AUTHENTICATE = -120;		// B
+			public static final byte CMD_GET_RESPONSE = -64;		// B
+			public static final byte CMD_GET_DATA = -54;		// B
+			public static final byte CMD_PUT_DATA = -38;		// B
+			public static final byte CMD_PUT_KEY = -37;		// B
+			public static final byte CMD_TERMINATE_DF = -26;		// B
+			public static final byte CMD_ACTIVATE_FILE = 68;		// B
+			public static final byte MAX_TRIES_PIN1 = 3;		// B
+			public static final byte MAX_TRIES_RC = 3;		// B
+			public static final byte MAX_TRIES_PIN3 = 3;		// B
+			public static final byte MAX_PIN_LENGTH = 32;		// B
+			private static final short SW_PIN_FAILED_00 = 25536;		// S
+			private static final short SW_PIN_BLOCKED = 27011;		// S
+			private static final byte MIN_PIN1_LENGTH = 6;		// B
+			private static final byte MIN_PIN3_LENGTH = 8;		// B
+			private static final byte PIN_INDEX_PW1 = 0;		// B
+			private static final byte PIN_INDEX_PW3 = 1;		// B
+			private static final byte PIN_INDEX_RC = 2;		// B
+			private static final short RSA_KEY_LENGTH_BYTES = 256;		// S
+			private static final short RSA_KEY_HALF_LENGTH_BYTES = 128;		// S
+			private static final byte KEY_PART_E = 0;		// B
+			private static final byte KEY_PART_PRIME_P = 1;		// B
+			private static final byte KEY_PART_PRIME_Q = 2;		// B
+			private static final byte KEY_PART_PARAM_PQ = 3;		// B
+			private static final byte KEY_PART_PARAM_DP1 = 4;		// B
+			private static final byte KEY_PART_PARAM_DQ1 = 5;		// B
+			private static final byte KEY_PART_N = 6;		// B
+			private static final byte TEMP_INS = 0;		// B
+			private static final byte TEMP_PUT_KEY_ACCUMULATOR_LENGTH = 1;		// B
+			private static final byte TEMP_PUT_KEY_KEY_TYPE = 3;		// B
+			private static final byte TEMP_PUT_KEY_KEY_CHUNK = 4;		// B
+			private static final byte TEMP_PUT_KEY_EXPECTED_CHUNK_SIZE = 5;		// B
+			private static final byte TEMP_PUT_KEY_ACCUMULATOR = 7;		// B
+			private static final byte TEMP_GET_RESPONSE_OFFSET = 1;		// B
+			private static final byte TEMP_GET_RESPONSE_LENGTH = 3;		// B
+			private static final byte TEMP_GET_RESPONSE_DATA = 5;		// B
+			private static final byte[] historicalBytes = {0,115,-64,64,-128,0,-112,0};		// [B
+			private static final byte[] extendedCapabilities = {120,1,0,-2,0,0,0,-1,1,0};		// [B
+			private static final byte[] algorithmAttributes = {1,8,0,0,32,3};		// [B
+			private static final byte[] expectedRSAKeyImportFormat = {77,-126,3,-97,0,0,127,72,21,-111,0,-110,-127,-128,-109,-127,-128,-108,-127,-128,-107,-127,-128,-106,-127,-128,-105,-126,1,0,95,72,-126,3,-128};		// [B
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+			storeVariableLength(Ljavacard/framework/APDU;[BS)V;
+			storeFixedLength(Ljavacard/framework/APDU;[BSS)V;
+		}
+
+		.method protected <init>([BSB)V 0 {
+			.stack 6;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 32;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					bspush 8;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 49;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 50;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 51;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 52;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 53;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 54;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 55;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 56;
+					bastore;
+					putfield_a 0;		// reference net/ss3t/javacard/gpg/Gpg.defaultPIN
+					aload_0;
+					sconst_0;
+					putfield_b 1;		// boolean net/ss3t/javacard/gpg/Gpg.terminated
+					aload_0;
+					sconst_3;
+					newarray 11;
+					putfield_a 2;		// reference net/ss3t/javacard/gpg/Gpg.pinLength
+					aload_0;
+					sconst_3;
+					anewarray 29;		// javacard/framework/OwnerPIN
+					putfield_a 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_0;
+					new 29;		// javacard/framework/OwnerPIN
+					dup;
+					sconst_3;
+					bspush 32;
+					invokespecial 34;		// javacard/framework/OwnerPIN.<init>(BB)V
+					aastore;
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_0;
+					aaload;
+					getfield_a_this 0;		// reference net/ss3t/javacard/gpg/Gpg.defaultPIN
+					sconst_0;
+					bspush 6;
+					invokevirtual 25;		// update([BSB)V
+					getfield_a_this 2;		// reference net/ss3t/javacard/gpg/Gpg.pinLength
+					sconst_0;
+					bspush 6;
+					bastore;
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_1;
+					new 29;		// javacard/framework/OwnerPIN
+					dup;
+					sconst_3;
+					bspush 32;
+					invokespecial 34;		// javacard/framework/OwnerPIN.<init>(BB)V
+					aastore;
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_1;
+					aaload;
+					getfield_a_this 0;		// reference net/ss3t/javacard/gpg/Gpg.defaultPIN
+					sconst_0;
+					bspush 8;
+					invokevirtual 25;		// update([BSB)V
+					getfield_a_this 2;		// reference net/ss3t/javacard/gpg/Gpg.pinLength
+					sconst_1;
+					bspush 8;
+					bastore;
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_2;
+					new 29;		// javacard/framework/OwnerPIN
+					dup;
+					sconst_3;
+					bspush 32;
+					invokespecial 34;		// javacard/framework/OwnerPIN.<init>(BB)V
+					aastore;
+					getfield_a_this 2;		// reference net/ss3t/javacard/gpg/Gpg.pinLength
+					sconst_2;
+					sconst_0;
+					bastore;
+					aload_0;
+					sconst_2;
+					sconst_2;
+					invokestatic 28;		// javacard/framework/JCSystem.makeTransientBooleanArray(SB)[Z
+					putfield_a 4;		// reference net/ss3t/javacard/gpg/Gpg.pinSubmitted
+					aload_0;
+					sspush 263;
+					sconst_2;
+					invokestatic 30;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					aload_0;
+					sspush 255;
+					newarray 11;
+					putfield_a 6;		// reference net/ss3t/javacard/gpg/Gpg.privateDO1
+					aload_0;
+					sspush 255;
+					newarray 11;
+					putfield_a 7;		// reference net/ss3t/javacard/gpg/Gpg.privateDO2
+					aload_0;
+					sspush 255;
+					newarray 11;
+					putfield_a 8;		// reference net/ss3t/javacard/gpg/Gpg.privateDO3
+					aload_0;
+					sspush 255;
+					newarray 11;
+					putfield_a 9;		// reference net/ss3t/javacard/gpg/Gpg.privateDO4
+					aload_0;
+					sspush 255;
+					newarray 11;
+					putfield_a 10;		// reference net/ss3t/javacard/gpg/Gpg.loginData
+					aload_0;
+					sspush 255;
+					newarray 11;
+					putfield_a 11;		// reference net/ss3t/javacard/gpg/Gpg.url
+					aload_0;
+					bspush 40;
+					newarray 11;
+					putfield_a 12;		// reference net/ss3t/javacard/gpg/Gpg.name
+					aload_0;
+					bspush 9;
+					newarray 11;
+					putfield_a 13;		// reference net/ss3t/javacard/gpg/Gpg.language
+					aload_0;
+					sconst_1;
+					newarray 11;
+					putfield_a 14;		// reference net/ss3t/javacard/gpg/Gpg.sex
+					aload_0;
+					bspush 60;
+					newarray 11;
+					putfield_a 15;		// reference net/ss3t/javacard/gpg/Gpg.fingerprints
+					aload_0;
+					bspush 60;
+					newarray 11;
+					putfield_a 16;		// reference net/ss3t/javacard/gpg/Gpg.caFingerprints
+					aload_0;
+					bspush 12;
+					newarray 11;
+					putfield_a 17;		// reference net/ss3t/javacard/gpg/Gpg.generationDates
+					aload_0;
+					sconst_3;
+					newarray 11;
+					putfield_a 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					aload_0;
+					sconst_0;
+					putfield_b 19;		// byte net/ss3t/javacard/gpg/Gpg.pinValidForMultipleSignatures
+					aload_0;
+					new 26;		// javacard/security/KeyPair
+					dup;
+					sconst_2;
+					sspush 2048;
+					invokespecial 27;		// javacard/security/KeyPair.<init>(BS)V
+					putfield_a 20;		// reference net/ss3t/javacard/gpg/Gpg.signatureKey
+					aload_0;
+					new 26;		// javacard/security/KeyPair
+					dup;
+					sconst_2;
+					sspush 2048;
+					invokespecial 27;		// javacard/security/KeyPair.<init>(BS)V
+					putfield_a 21;		// reference net/ss3t/javacard/gpg/Gpg.confidentialityKey
+					aload_0;
+					new 26;		// javacard/security/KeyPair
+					dup;
+					sconst_2;
+					sspush 2048;
+					invokespecial 27;		// javacard/security/KeyPair.<init>(BS)V
+					putfield_a 22;		// reference net/ss3t/javacard/gpg/Gpg.authenticationKey
+					aload_0;
+					bspush 10;
+					sconst_0;
+					invokestatic 31;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					putfield_a 23;		// reference net/ss3t/javacard/gpg/Gpg.cipherRSA
+					aload_0;
+					sconst_2;
+					invokestatic 33;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+					putfield_a 24;		// reference net/ss3t/javacard/gpg/Gpg.randomData
+					aload_0;
+					invokevirtual 35;		// register()V
+					return;
+		}
+
+		.method public static install([BSB)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 36;		// net/ss3t/javacard/gpg/Gpg
+					dup;
+					aload_0;
+					sload_1;
+					sload_2;
+					invokespecial 37;		// net/ss3t/javacard/gpg/Gpg.<init>([BSB)V
+					pop;
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 4;
+			.locals 5;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_1;
+					baload;
+					sstore_3;
+				L2:	sload_3;
+					bspush -64;
+					if_scmpne L15;
+				L3:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					baload;
+					bspush 71;
+					if_scmpne L14;
+				L4:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_3;
+					invokestatic 39;		// javacard/framework/Util.getShort([BS)S
+					sstore 4;
+				L5:	sload 4;
+					ifne L7;
+				L6:	return;
+				L7:	aload_1;
+					invokevirtual 40;		// setOutgoing()S
+					sstore 5;
+				L8:	sload 5;
+					sload 4;
+					if_scmple L10;
+				L9:	sload 4;
+					sstore 5;
+				L10:	sload 4;
+					sload 5;
+					ssub;
+					sstore 4;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_1;
+					invokestatic 39;		// javacard/framework/Util.getShort([BS)S
+					sstore 6;
+				L11:	aload_1;
+					sload 5;
+					invokevirtual 41;		// setOutgoingLength(S)V
+					aload_1;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sload 6;
+					sload 5;
+					invokevirtual 42;		// sendBytesLong([BSS)V
+					sload 4;
+					ifle L13;
+				L12:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_1;
+					sload 6;
+					sload 5;
+					sadd;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_3;
+					sload 4;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					sspush 24832;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+					goto L14;
+				L13:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_1;
+					sconst_0;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+				L14:	return;
+				L15:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					baload;
+					sload_3;
+					if_scmpeq L18;
+				L16:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					baload;
+					ifeq L18;
+				L17:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+				L18:	aload_0;
+					invokevirtual 46;		// selectingApplet()Z
+					ifeq L23;
+				L19:	invokestatic 47;		// javacard/framework/JCSystem.getAID()Ljavacard/framework/AID;
+					aload_2;
+					sconst_4;
+					invokevirtual 48;		// getBytes([BS)B
+					sstore 4;
+				L20:	aload_2;
+					sconst_0;
+					bspush 111;
+					bastore;
+					aload_2;
+					sconst_1;
+					sconst_2;
+					sload 4;
+					sadd;
+					s2b;
+					bastore;
+					aload_2;
+					sconst_2;
+					bspush -124;
+					bastore;
+					aload_2;
+					sconst_3;
+					sload 4;
+					s2b;
+					bastore;
+					aload_1;
+					sconst_0;
+					sconst_4;
+					sload 4;
+					sadd;
+					invokevirtual 49;		// setOutgoingAndSend(SS)V
+					getfield_b_this 1;		// boolean net/ss3t/javacard/gpg/Gpg.terminated
+					ifeq L22;
+				L21:	sspush 25221;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L22:	return;
+				L23:	getfield_b_this 1;		// boolean net/ss3t/javacard/gpg/Gpg.terminated
+					ifeq L26;
+				L24:	sload_3;
+					bspush 68;
+					if_scmpeq L26;
+				L25:	sspush 27013;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L26:	aload_2;
+					sconst_2;
+					invokestatic 39;		// javacard/framework/Util.getShort([BS)S
+					sstore 4;
+				L27:	sload_3;
+					slookupswitch L51 12 -124 L42 -120 L46 -54 L31 -38 L41 -37 L43 -26 L49 32 L28 36 L29 42 L32 44 L30 68 L50 71 L37;
+				L28:	aload_0;
+					aload_1;
+					invokespecial 50;		// net/ss3t/javacard/gpg/Gpg.verify(Ljavacard/framework/APDU;)V
+					goto_w L52;
+				L29:	aload_0;
+					aload_1;
+					invokespecial 51;		// net/ss3t/javacard/gpg/Gpg.changeReferenceData(Ljavacard/framework/APDU;)V
+					goto_w L52;
+				L30:	aload_0;
+					aload_1;
+					invokespecial 52;		// net/ss3t/javacard/gpg/Gpg.resetRetryCounter(Ljavacard/framework/APDU;)V
+					goto_w L52;
+				L31:	aload_0;
+					aload_1;
+					invokespecial 53;		// net/ss3t/javacard/gpg/Gpg.getData(Ljavacard/framework/APDU;)V
+					goto_w L52;
+				L32:	sload 4;
+					sspush -24934;
+					if_scmpne L34;
+				L33:	aload_0;
+					aload_1;
+					invokespecial 54;		// net/ss3t/javacard/gpg/Gpg.computeSignature(Ljavacard/framework/APDU;)V
+					goto L52;
+				L34:	sload 4;
+					sspush -32634;
+					if_scmpne L36;
+				L35:	aload_0;
+					aload_1;
+					invokespecial 55;		// net/ss3t/javacard/gpg/Gpg.decrypt(Ljavacard/framework/APDU;)V
+					goto L52;
+				L36:	sspush 27270;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+					goto L52;
+				L37:	sload 4;
+					sspush -32768;
+					if_scmpeq L40;
+				L38:	sload 4;
+					sspush -32512;
+					if_scmpeq L40;
+				L39:	sspush 27270;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L40:	aload_0;
+					aload_1;
+					invokespecial 56;		// net/ss3t/javacard/gpg/Gpg.generateAsymetricKey(Ljavacard/framework/APDU;)V
+					goto L52;
+				L41:	aload_0;
+					aload_1;
+					invokespecial 57;		// net/ss3t/javacard/gpg/Gpg.putData(Ljavacard/framework/APDU;)V
+					goto L52;
+				L42:	aload_0;
+					aload_1;
+					invokespecial 58;		// net/ss3t/javacard/gpg/Gpg.getChallenge(Ljavacard/framework/APDU;)V
+					goto L52;
+				L43:	sload 4;
+					sspush 16383;
+					if_scmpeq L45;
+				L44:	sspush 27270;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L45:	aload_0;
+					aload_1;
+					invokespecial 59;		// net/ss3t/javacard/gpg/Gpg.putKey(Ljavacard/framework/APDU;)V
+					goto L52;
+				L46:	sload 4;
+					ifeq L48;
+				L47:	sspush 27270;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L48:	aload_0;
+					aload_1;
+					invokespecial 60;		// net/ss3t/javacard/gpg/Gpg.internalAuthenticate(Ljavacard/framework/APDU;)V
+					goto L52;
+				L49:	aload_0;
+					aload_1;
+					invokespecial 61;		// net/ss3t/javacard/gpg/Gpg.terminateDF(Ljavacard/framework/APDU;)V
+					goto L52;
+				L50:	aload_0;
+					aload_1;
+					invokespecial 62;		// net/ss3t/javacard/gpg/Gpg.activateFile(Ljavacard/framework/APDU;)V
+					goto L52;
+				L51:	sspush 27014;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L52:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					sload_3;
+					bastore;
+					return;
+		}
+
+		.method private verify(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_2;
+					baload;
+					ifeq L3;
+				L2:	sspush 27270;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	sconst_0;
+					sstore_3;
+				L4:	aload_2;
+					sconst_3;
+					baload;
+					sstore 4;
+				L5:	bspush 6;
+					sstore 5;
+				L6:	sload 4;
+					bspush -125;
+					if_scmpne L8;
+				L7:	sconst_1;
+					sstore_3;
+					bspush 8;
+					sstore 5;
+					goto L11;
+				L8:	sload 4;
+					bspush -127;
+					if_scmpeq L11;
+				L9:	sload 4;
+					bspush -126;
+					if_scmpeq L11;
+				L10:	sspush 27270;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore 6;
+				L12:	aload_1;
+					invokevirtual 63;		// setIncomingAndReceive()S
+					sload 6;
+					if_scmpne L15;
+				L13:	sload 6;
+					bspush 32;
+					if_scmpgt L15;
+				L14:	sload 6;
+					sload 5;
+					if_scmpge L16;
+				L15:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L16:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sload_3;
+					aaload;
+					invokevirtual 64;		// getTriesRemaining()B
+					ifne L18;
+				L17:	sspush 27011;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L18:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sload_3;
+					aaload;
+					aload_2;
+					sconst_5;
+					sload 6;
+					s2b;
+					invokevirtual 65;		// check([BSB)Z
+					sstore 7;
+				L19:	sload 4;
+					bspush -125;
+					if_scmpeq L21;
+				L20:	getfield_a_this 4;		// reference net/ss3t/javacard/gpg/Gpg.pinSubmitted
+					sload 4;
+					sspush 129;
+					ssub;
+					s2b;
+					sload 7;
+					bastore;
+				L21:	sload 7;
+					ifeq L23;
+				L22:	sspush -28672;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L23:	sspush 25536;
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sload_3;
+					aaload;
+					invokevirtual 64;		// getTriesRemaining()B
+					sadd;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+					return;
+		}
+
+		.method private updatePIN(S[BSB)V {
+			.stack 4;
+			.locals 0;
+
+				L0:	invokestatic 66;		// javacard/framework/JCSystem.beginTransaction()V
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sload_1;
+					aaload;
+					aload_2;
+					sload_3;
+					sload 4;
+					invokevirtual 25;		// update([BSB)V
+					getfield_a_this 2;		// reference net/ss3t/javacard/gpg/Gpg.pinLength
+					sload_1;
+					sload 4;
+					bastore;
+					invokestatic 67;		// javacard/framework/JCSystem.commitTransaction()V
+					return;
+		}
+
+		.method private changeReferenceData(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_2;
+					baload;
+					ifeq L3;
+				L2:	sspush 27270;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	sconst_0;
+					sstore_3;
+				L4:	bspush 6;
+					sstore 4;
+				L5:	aload_2;
+					sconst_3;
+					baload;
+					sstore 5;
+				L6:	sload 5;
+					bspush -125;
+					if_scmpne L8;
+				L7:	sconst_1;
+					sstore_3;
+					bspush 8;
+					sstore 4;
+					goto L10;
+				L8:	sload 5;
+					bspush -127;
+					if_scmpeq L10;
+				L9:	sspush 27270;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	getfield_a_this 2;		// reference net/ss3t/javacard/gpg/Gpg.pinLength
+					sload_3;
+					baload;
+					sstore 6;
+				L11:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore 7;
+				L12:	aload_1;
+					invokevirtual 63;		// setIncomingAndReceive()S
+					sload 7;
+					if_scmpne L15;
+				L13:	sload 7;
+					sload 6;
+					bspush 32;
+					sadd;
+					if_scmpgt L15;
+				L14:	sload 7;
+					sload 6;
+					sload 4;
+					sadd;
+					if_scmpge L16;
+				L15:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L16:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sload_3;
+					aaload;
+					invokevirtual 64;		// getTriesRemaining()B
+					ifne L18;
+				L17:	sspush 27011;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L18:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sload_3;
+					aaload;
+					aload_2;
+					sconst_5;
+					sload 6;
+					invokevirtual 65;		// check([BSB)Z
+					ifne L20;
+				L19:	getfield_a_this 4;		// reference net/ss3t/javacard/gpg/Gpg.pinSubmitted
+					sconst_0;
+					sconst_0;
+					bastore;
+					sspush 25536;
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sload_3;
+					aaload;
+					invokevirtual 64;		// getTriesRemaining()B
+					sadd;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L20:	aload_0;
+					sload_3;
+					aload_2;
+					sconst_5;
+					sload 6;
+					sadd;
+					sload 7;
+					sload 6;
+					ssub;
+					s2b;
+					invokespecial 68;		// net/ss3t/javacard/gpg/Gpg.updatePIN(S[BSB)V
+					return;
+		}
+
+		.method private resetRetryCounter(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_1;
+					invokevirtual 63;		// setIncomingAndReceive()S
+					sload_3;
+					if_scmpeq L4;
+				L3:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	aload_2;
+					sconst_3;
+					baload;
+					bspush -127;
+					if_scmpeq L6;
+				L5:	sspush 27270;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	aload_2;
+					sconst_2;
+					baload;
+					ifne L18;
+				L7:	getfield_a_this 2;		// reference net/ss3t/javacard/gpg/Gpg.pinLength
+					sconst_2;
+					baload;
+					sstore 4;
+				L8:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_2;
+					aaload;
+					invokevirtual 64;		// getTriesRemaining()B
+					ifeq L10;
+				L9:	sload 4;
+					ifne L11;
+				L10:	sspush 27011;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	sload_3;
+					sload 4;
+					bspush 6;
+					sadd;
+					if_scmplt L13;
+				L12:	sload_3;
+					sload 4;
+					bspush 32;
+					sadd;
+					if_scmple L14;
+				L13:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L14:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_2;
+					aaload;
+					aload_2;
+					sconst_5;
+					sload 4;
+					invokevirtual 65;		// check([BSB)Z
+					ifeq L16;
+				L15:	aload_0;
+					sconst_0;
+					aload_2;
+					sconst_5;
+					sload 4;
+					sadd;
+					sload_3;
+					sload 4;
+					ssub;
+					s2b;
+					invokespecial 68;		// net/ss3t/javacard/gpg/Gpg.updatePIN(S[BSB)V
+					goto L17;
+				L16:	sspush 25536;
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_2;
+					aaload;
+					invokevirtual 64;		// getTriesRemaining()B
+					sadd;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L17:	goto L26;
+				L18:	aload_2;
+					sconst_2;
+					baload;
+					sconst_2;
+					if_scmpne L25;
+				L19:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_1;
+					aaload;
+					invokevirtual 69;		// isValidated()Z
+					ifne L21;
+				L20:	sspush 27013;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L21:	sload_3;
+					bspush 6;
+					if_scmplt L23;
+				L22:	sload_3;
+					bspush 32;
+					if_scmple L24;
+				L23:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L24:	aload_0;
+					sconst_0;
+					aload_2;
+					sconst_5;
+					sload_3;
+					s2b;
+					invokespecial 68;		// net/ss3t/javacard/gpg/Gpg.updatePIN(S[BSB)V
+					goto L26;
+				L25:	sspush 27270;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L26:	return;
+		}
+
+		.method private getData(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_2;
+					invokestatic 39;		// javacard/framework/Util.getShort([BS)S
+					sstore_3;
+				L2:	sconst_0;
+					sstore 4;
+				L3:	sload_3;
+					slookupswitch L31 24 79 L4 91 L5 94 L6 101 L11 110 L12 115 L14 122 L15 147 L16 192 L17 193 L18 194 L18 195 L18 196 L19 197 L20 198 L21 205 L22 257 L23 258 L24 259 L25 260 L28 24365 L7 24373 L8 24400 L9 24402 L10;
+				L4:	invokestatic 47;		// javacard/framework/JCSystem.getAID()Ljavacard/framework/AID;
+					aload_2;
+					sconst_0;
+					invokevirtual 48;		// getBytes([BS)B
+					sstore 4;
+					goto_w L32;
+				L5:	getfield_a_this 12;		// reference net/ss3t/javacard/gpg/Gpg.name
+					sconst_1;
+					aload_2;
+					sconst_0;
+					getfield_a_this 12;		// reference net/ss3t/javacard/gpg/Gpg.name
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto_w L32;
+				L6:	getfield_a_this 10;		// reference net/ss3t/javacard/gpg/Gpg.loginData
+					sconst_1;
+					aload_2;
+					sconst_0;
+					getfield_a_this 10;		// reference net/ss3t/javacard/gpg/Gpg.loginData
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto_w L32;
+				L7:	getfield_a_this 13;		// reference net/ss3t/javacard/gpg/Gpg.language
+					sconst_1;
+					aload_2;
+					sconst_0;
+					getfield_a_this 13;		// reference net/ss3t/javacard/gpg/Gpg.language
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto_w L32;
+				L8:	aload_2;
+					sconst_0;
+					getfield_a_this 14;		// reference net/ss3t/javacard/gpg/Gpg.sex
+					sconst_0;
+					baload;
+					bastore;
+					sconst_1;
+					sstore 4;
+					goto_w L32;
+				L9:	getfield_a_this 11;		// reference net/ss3t/javacard/gpg/Gpg.url
+					sconst_1;
+					aload_2;
+					sconst_0;
+					getfield_a_this 11;		// reference net/ss3t/javacard/gpg/Gpg.url
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto_w L32;
+				L10:	getstatic_a 71;		// reference net/ss3t/javacard/gpg/Gpg.historicalBytes
+					sconst_0;
+					aload_2;
+					sconst_0;
+					getstatic_a 71;		// reference net/ss3t/javacard/gpg/Gpg.historicalBytes
+					arraylength;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto_w L32;
+				L11:	aload_2;
+					sconst_0;
+					bspush 91;
+					bastore;
+					aload_2;
+					sconst_1;
+					getfield_a_this 12;		// reference net/ss3t/javacard/gpg/Gpg.name
+					sconst_0;
+					baload;
+					bastore;
+					getfield_a_this 12;		// reference net/ss3t/javacard/gpg/Gpg.name
+					sconst_1;
+					aload_2;
+					sconst_2;
+					getfield_a_this 12;		// reference net/ss3t/javacard/gpg/Gpg.name
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					aload_2;
+					sload 4;
+					sinc 4 1;
+					bspush 95;
+					bastore;
+					aload_2;
+					sload 4;
+					sinc 4 1;
+					bspush 45;
+					bastore;
+					aload_2;
+					sload 4;
+					sinc 4 1;
+					getfield_a_this 13;		// reference net/ss3t/javacard/gpg/Gpg.language
+					sconst_0;
+					baload;
+					bastore;
+					getfield_a_this 13;		// reference net/ss3t/javacard/gpg/Gpg.language
+					sconst_1;
+					aload_2;
+					sload 4;
+					getfield_a_this 13;		// reference net/ss3t/javacard/gpg/Gpg.language
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					aload_2;
+					sload 4;
+					sinc 4 1;
+					bspush 95;
+					bastore;
+					aload_2;
+					sload 4;
+					sinc 4 1;
+					bspush 53;
+					bastore;
+					aload_2;
+					sload 4;
+					sinc 4 1;
+					sconst_1;
+					bastore;
+					aload_2;
+					sload 4;
+					sinc 4 1;
+					getfield_a_this 14;		// reference net/ss3t/javacard/gpg/Gpg.sex
+					sconst_0;
+					baload;
+					bastore;
+					goto_w L32;
+				L12:	aload_2;
+					sconst_0;
+					bspush 79;
+					bastore;
+					aload_2;
+					sconst_1;
+					invokestatic 47;		// javacard/framework/JCSystem.getAID()Ljavacard/framework/AID;
+					aload_2;
+					sconst_2;
+					invokevirtual 48;		// getBytes([BS)B
+					bastore;
+					sconst_2;
+					aload_2;
+					sconst_1;
+					baload;
+					sadd;
+					sstore 4;
+					aload_0;
+					sspush 24402;
+					getstatic_a 71;		// reference net/ss3t/javacard/gpg/Gpg.historicalBytes
+					aload_2;
+					sload 4;
+					invokespecial 72;		// net/ss3t/javacard/gpg/Gpg.addShortTLV(S[B[BS)S
+					sstore 4;
+					aload_2;
+					sload 4;
+					sinc 4 1;
+					bspush 115;
+					bastore;
+					aload_2;
+					sload 4;
+					sinc 4 1;
+					bspush -127;
+					bastore;
+					sload 4;
+					sstore 5;
+				L13:	aload_0;
+					aload_2;
+					sload 4;
+					sconst_1;
+					sadd;
+					invokespecial 73;		// net/ss3t/javacard/gpg/Gpg.addDiscretionaryDataObjects([BS)S
+					sstore 4;
+					aload_2;
+					sload 5;
+					sload 4;
+					sload 5;
+					ssub;
+					sconst_1;
+					ssub;
+					s2b;
+					bastore;
+					goto_w L32;
+				L14:	aload_0;
+					aload_2;
+					sconst_0;
+					invokespecial 73;		// net/ss3t/javacard/gpg/Gpg.addDiscretionaryDataObjects([BS)S
+					sstore 4;
+					goto_w L32;
+				L15:	aload_0;
+					sspush 147;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					aload_2;
+					sload 4;
+					invokespecial 72;		// net/ss3t/javacard/gpg/Gpg.addShortTLV(S[B[BS)S
+					sstore 4;
+					goto_w L32;
+				L16:	getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_0;
+					aload_2;
+					sconst_0;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					arraylength;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto_w L32;
+				L17:	getstatic_a 74;		// reference net/ss3t/javacard/gpg/Gpg.extendedCapabilities
+					sconst_0;
+					aload_2;
+					sconst_0;
+					getstatic_a 74;		// reference net/ss3t/javacard/gpg/Gpg.extendedCapabilities
+					arraylength;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto_w L32;
+				L18:	getstatic_a 75;		// reference net/ss3t/javacard/gpg/Gpg.algorithmAttributes
+					sconst_0;
+					aload_2;
+					sconst_0;
+					getstatic_a 75;		// reference net/ss3t/javacard/gpg/Gpg.algorithmAttributes
+					arraylength;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto_w L32;
+				L19:	aload_0;
+					aload_2;
+					sconst_0;
+					invokespecial 76;		// net/ss3t/javacard/gpg/Gpg.getPWStatusBytes([BS)S
+					sstore 4;
+					goto_w L32;
+				L20:	getfield_a_this 15;		// reference net/ss3t/javacard/gpg/Gpg.fingerprints
+					sconst_0;
+					aload_2;
+					sconst_0;
+					getfield_a_this 15;		// reference net/ss3t/javacard/gpg/Gpg.fingerprints
+					arraylength;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto_w L32;
+				L21:	getfield_a_this 16;		// reference net/ss3t/javacard/gpg/Gpg.caFingerprints
+					sconst_0;
+					aload_2;
+					sconst_0;
+					getfield_a_this 16;		// reference net/ss3t/javacard/gpg/Gpg.caFingerprints
+					arraylength;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto_w L32;
+				L22:	getfield_a_this 17;		// reference net/ss3t/javacard/gpg/Gpg.generationDates
+					sconst_0;
+					aload_2;
+					sconst_0;
+					getfield_a_this 17;		// reference net/ss3t/javacard/gpg/Gpg.generationDates
+					arraylength;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto_w L32;
+				L23:	getfield_a_this 6;		// reference net/ss3t/javacard/gpg/Gpg.privateDO1
+					sconst_1;
+					aload_2;
+					sconst_0;
+					getfield_a_this 6;		// reference net/ss3t/javacard/gpg/Gpg.privateDO1
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto L32;
+				L24:	getfield_a_this 7;		// reference net/ss3t/javacard/gpg/Gpg.privateDO2
+					sconst_1;
+					aload_2;
+					sconst_0;
+					getfield_a_this 7;		// reference net/ss3t/javacard/gpg/Gpg.privateDO2
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto L32;
+				L25:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_0;
+					aaload;
+					invokevirtual 69;		// isValidated()Z
+					ifne L27;
+				L26:	sspush 27010;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L27:	getfield_a_this 8;		// reference net/ss3t/javacard/gpg/Gpg.privateDO3
+					sconst_1;
+					aload_2;
+					sconst_0;
+					getfield_a_this 8;		// reference net/ss3t/javacard/gpg/Gpg.privateDO3
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto L32;
+				L28:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_1;
+					aaload;
+					invokevirtual 69;		// isValidated()Z
+					ifne L30;
+				L29:	sspush 27010;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L30:	getfield_a_this 9;		// reference net/ss3t/javacard/gpg/Gpg.privateDO4
+					sconst_1;
+					aload_2;
+					sconst_0;
+					getfield_a_this 9;		// reference net/ss3t/javacard/gpg/Gpg.privateDO4
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore 4;
+					goto L32;
+				L31:	sspush 27267;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L32:	aload_1;
+					sconst_0;
+					sload 4;
+					invokevirtual 49;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method private addDiscretionaryDataObjects([BS)S {
+			.stack 5;
+			.locals 1;
+
+				L0:	aload_0;
+					sspush 192;
+					getstatic_a 74;		// reference net/ss3t/javacard/gpg/Gpg.extendedCapabilities
+					aload_1;
+					sload_2;
+					invokespecial 72;		// net/ss3t/javacard/gpg/Gpg.addShortTLV(S[B[BS)S
+					sstore_2;
+					sconst_0;
+					sstore_3;
+				L1:	sload_3;
+					sconst_3;
+					if_scmpge L3;
+				L2:	aload_0;
+					sspush 193;
+					sload_3;
+					sadd;
+					getstatic_a 75;		// reference net/ss3t/javacard/gpg/Gpg.algorithmAttributes
+					aload_1;
+					sload_2;
+					invokespecial 72;		// net/ss3t/javacard/gpg/Gpg.addShortTLV(S[B[BS)S
+					sstore_2;
+					sinc 3 1;
+					goto L1;
+				L3:	aload_1;
+					sload_2;
+					sinc 2 1;
+					bspush -60;
+					bastore;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					bspush 7;
+					bastore;
+					aload_0;
+					aload_1;
+					sload_2;
+					invokespecial 76;		// net/ss3t/javacard/gpg/Gpg.getPWStatusBytes([BS)S
+					pop;
+					sinc 2 7;
+					aload_0;
+					sspush 197;
+					getfield_a_this 15;		// reference net/ss3t/javacard/gpg/Gpg.fingerprints
+					aload_1;
+					sload_2;
+					invokespecial 72;		// net/ss3t/javacard/gpg/Gpg.addShortTLV(S[B[BS)S
+					sstore_2;
+					aload_0;
+					sspush 198;
+					getfield_a_this 16;		// reference net/ss3t/javacard/gpg/Gpg.caFingerprints
+					aload_1;
+					sload_2;
+					invokespecial 72;		// net/ss3t/javacard/gpg/Gpg.addShortTLV(S[B[BS)S
+					sstore_2;
+					aload_0;
+					sspush 205;
+					getfield_a_this 17;		// reference net/ss3t/javacard/gpg/Gpg.generationDates
+					aload_1;
+					sload_2;
+					invokespecial 72;		// net/ss3t/javacard/gpg/Gpg.addShortTLV(S[B[BS)S
+					sstore_2;
+					sload_2;
+					sreturn;
+		}
+
+		.method private getPWStatusBytes([BS)S {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_1;
+					sload_2;
+					sinc 2 1;
+					getfield_b_this 19;		// byte net/ss3t/javacard/gpg/Gpg.pinValidForMultipleSignatures
+					bastore;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					bspush 32;
+					bastore;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					bspush 32;
+					bastore;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					bspush 32;
+					bastore;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_0;
+					aaload;
+					invokevirtual 64;		// getTriesRemaining()B
+					bastore;
+					getfield_a_this 2;		// reference net/ss3t/javacard/gpg/Gpg.pinLength
+					sconst_2;
+					baload;
+					ifle L2;
+				L1:	aload_1;
+					sload_2;
+					sinc 2 1;
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_2;
+					aaload;
+					invokevirtual 64;		// getTriesRemaining()B
+					bastore;
+					goto L3;
+				L2:	aload_1;
+					sload_2;
+					sinc 2 1;
+					sconst_0;
+					bastore;
+				L3:	aload_1;
+					sload_2;
+					sinc 2 1;
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_1;
+					aaload;
+					invokevirtual 64;		// getTriesRemaining()B
+					bastore;
+					sload_2;
+					sreturn;
+		}
+
+		.method private addShortTLV(S[B[BS)S {
+			.stack 5;
+			.locals 0;
+
+				L0:	sload_1;
+					sspush -256;
+					sand;
+					ifeq L2;
+				L1:	aload_3;
+					sload 4;
+					sload_1;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					sinc 4 2;
+					goto L3;
+				L2:	aload_3;
+					sload 4;
+					sinc 4 1;
+					sload_1;
+					s2b;
+					bastore;
+				L3:	aload_3;
+					sload 4;
+					sinc 4 1;
+					aload_2;
+					arraylength;
+					s2b;
+					bastore;
+					aload_2;
+					sconst_0;
+					aload_3;
+					sload 4;
+					aload_2;
+					arraylength;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sreturn;
+		}
+
+		.method private putData(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	aload_2;
+					sconst_2;
+					invokestatic 39;		// javacard/framework/Util.getShort([BS)S
+					sstore 4;
+				L3:	sload 4;
+					slookupswitch L28 20 91 L8 94 L9 196 L13 199 L20 200 L20 201 L20 202 L21 203 L21 204 L21 206 L22 207 L22 208 L22 211 L23 257 L4 258 L5 259 L6 260 L7 24365 L10 24373 L11 24400 L12;
+				L4:	aload_0;
+					aload_1;
+					getfield_a_this 6;		// reference net/ss3t/javacard/gpg/Gpg.privateDO1
+					sconst_0;
+					invokevirtual 77;		// storeVariableLength(Ljavacard/framework/APDU;[BS)V
+					goto_w L29;
+				L5:	aload_0;
+					aload_1;
+					getfield_a_this 7;		// reference net/ss3t/javacard/gpg/Gpg.privateDO2
+					sconst_1;
+					invokevirtual 77;		// storeVariableLength(Ljavacard/framework/APDU;[BS)V
+					goto_w L29;
+				L6:	aload_0;
+					aload_1;
+					getfield_a_this 8;		// reference net/ss3t/javacard/gpg/Gpg.privateDO3
+					sconst_0;
+					invokevirtual 77;		// storeVariableLength(Ljavacard/framework/APDU;[BS)V
+					goto_w L29;
+				L7:	aload_0;
+					aload_1;
+					getfield_a_this 9;		// reference net/ss3t/javacard/gpg/Gpg.privateDO4
+					sconst_1;
+					invokevirtual 77;		// storeVariableLength(Ljavacard/framework/APDU;[BS)V
+					goto_w L29;
+				L8:	aload_0;
+					aload_1;
+					getfield_a_this 12;		// reference net/ss3t/javacard/gpg/Gpg.name
+					sconst_1;
+					invokevirtual 77;		// storeVariableLength(Ljavacard/framework/APDU;[BS)V
+					goto_w L29;
+				L9:	aload_0;
+					aload_1;
+					getfield_a_this 10;		// reference net/ss3t/javacard/gpg/Gpg.loginData
+					sconst_1;
+					invokevirtual 77;		// storeVariableLength(Ljavacard/framework/APDU;[BS)V
+					goto_w L29;
+				L10:	aload_0;
+					aload_1;
+					getfield_a_this 13;		// reference net/ss3t/javacard/gpg/Gpg.language
+					sconst_1;
+					invokevirtual 77;		// storeVariableLength(Ljavacard/framework/APDU;[BS)V
+					goto_w L29;
+				L11:	aload_0;
+					aload_1;
+					getfield_a_this 14;		// reference net/ss3t/javacard/gpg/Gpg.sex
+					sconst_0;
+					sconst_1;
+					invokevirtual 78;		// storeFixedLength(Ljavacard/framework/APDU;[BSS)V
+					goto_w L29;
+				L12:	aload_0;
+					aload_1;
+					getfield_a_this 11;		// reference net/ss3t/javacard/gpg/Gpg.url
+					sconst_1;
+					invokevirtual 77;		// storeVariableLength(Ljavacard/framework/APDU;[BS)V
+					goto_w L29;
+				L13:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_1;
+					aaload;
+					invokevirtual 69;		// isValidated()Z
+					ifne L15;
+				L14:	sspush 27010;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L15:	sload_3;
+					sconst_1;
+					if_scmplt L18;
+				L16:	sload_3;
+					bspush 8;
+					if_scmpgt L18;
+				L17:	sload_3;
+					aload_1;
+					invokevirtual 63;		// setIncomingAndReceive()S
+					if_scmpeq L19;
+				L18:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L19:	aload_0;
+					aload_2;
+					sconst_5;
+					baload;
+					putfield_b 19;		// byte net/ss3t/javacard/gpg/Gpg.pinValidForMultipleSignatures
+					goto L29;
+				L20:	aload_0;
+					aload_1;
+					getfield_a_this 15;		// reference net/ss3t/javacard/gpg/Gpg.fingerprints
+					bspush 20;
+					sload 4;
+					sspush 199;
+					ssub;
+					smul;
+					bspush 20;
+					invokevirtual 78;		// storeFixedLength(Ljavacard/framework/APDU;[BSS)V
+					goto L29;
+				L21:	aload_0;
+					aload_1;
+					getfield_a_this 16;		// reference net/ss3t/javacard/gpg/Gpg.caFingerprints
+					bspush 20;
+					sload 4;
+					sspush 202;
+					ssub;
+					smul;
+					bspush 20;
+					invokevirtual 78;		// storeFixedLength(Ljavacard/framework/APDU;[BSS)V
+					goto L29;
+				L22:	aload_0;
+					aload_1;
+					getfield_a_this 17;		// reference net/ss3t/javacard/gpg/Gpg.generationDates
+					sconst_4;
+					sload 4;
+					sspush 206;
+					ssub;
+					smul;
+					sconst_4;
+					invokevirtual 78;		// storeFixedLength(Ljavacard/framework/APDU;[BSS)V
+					goto L29;
+				L23:	aload_0;
+					aload_1;
+					aload_2;
+					sconst_1;
+					invokevirtual 77;		// storeVariableLength(Ljavacard/framework/APDU;[BS)V
+					sload_3;
+					bspush 32;
+					if_scmpgt L26;
+				L24:	sload_3;
+					ifeq L27;
+				L25:	sload_3;
+					bspush 8;
+					if_scmpge L27;
+				L26:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L27:	aload_0;
+					sconst_2;
+					aload_2;
+					sconst_1;
+					aload_2;
+					sconst_0;
+					baload;
+					invokespecial 68;		// net/ss3t/javacard/gpg/Gpg.updatePIN(S[BSB)V
+					goto L29;
+				L28:	sspush 27267;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L29:	return;
+		}
+
+		.method  storeVariableLength(Ljavacard/framework/APDU;[BS)V 128 {
+			.stack 5;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore 4;
+				L1:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sload_3;
+					aaload;
+					invokevirtual 69;		// isValidated()Z
+					ifeq L4;
+				L2:	sload_3;
+					ifne L5;
+				L3:	getfield_a_this 4;		// reference net/ss3t/javacard/gpg/Gpg.pinSubmitted
+					sconst_1;
+					baload;
+					ifne L5;
+				L4:	sspush 27010;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	aload 4;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore 5;
+				L6:	sload 5;
+					sconst_1;
+					sadd;
+					aload_2;
+					arraylength;
+					if_scmpgt L9;
+				L7:	sload 5;
+					sspush 255;
+					if_scmpgt L9;
+				L8:	aload_1;
+					invokevirtual 63;		// setIncomingAndReceive()S
+					sload 5;
+					if_scmpeq L10;
+				L9:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	invokestatic 66;		// javacard/framework/JCSystem.beginTransaction()V
+					aload_2;
+					sconst_0;
+					sload 5;
+					s2b;
+					bastore;
+					aload 4;
+					sconst_5;
+					aload_2;
+					sconst_1;
+					sload 5;
+					invokestatic 79;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					invokestatic 67;		// javacard/framework/JCSystem.commitTransaction()V
+					return;
+		}
+
+		.method  storeFixedLength(Ljavacard/framework/APDU;[BSS)V 129 {
+			.stack 5;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore 5;
+				L1:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_1;
+					aaload;
+					invokevirtual 69;		// isValidated()Z
+					ifne L3;
+				L2:	sspush 27010;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload 5;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore 6;
+				L4:	sload 6;
+					sload 4;
+					if_scmpgt L6;
+				L5:	aload_1;
+					invokevirtual 63;		// setIncomingAndReceive()S
+					sload 6;
+					if_scmpeq L7;
+				L6:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	aload 5;
+					sconst_5;
+					aload_2;
+					sload_3;
+					sload 6;
+					invokestatic 79;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sload 4;
+					sload 6;
+					if_scmple L9;
+				L8:	aload_2;
+					sload_3;
+					sload 6;
+					sadd;
+					sload 4;
+					sload 6;
+					ssub;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+				L9:	return;
+		}
+
+		.method private addKeyPart(B[BSLjavacard/security/KeyPair;)S {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/security/KeyPair;	1.16;
+
+				L0:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_5;
+					invokestatic 39;		// javacard/framework/Util.getShort([BS)S
+					sstore 5;
+				L1:	sspush 128;
+					sstore 6;
+				L2:	sload_1;
+					stableswitch L13 0 6 L3 L4 L5 L6 L7 L8 L9;
+				L3:	aload 4;
+					invokevirtual 80;		// getPublic()Ljavacard/security/PublicKey;
+					checkcast 0 81;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					aload_2;
+					sload_3;
+					sload 5;
+					invokeinterface 4 81 6;		// javacard/security/RSAPublicKey
+					goto_w L13;
+				L4:	aload 4;
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					checkcast 0 83;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					aload_2;
+					sload_3;
+					sload 5;
+					invokeinterface 4 83 11;		// javacard/security/RSAPrivateCrtKey
+					goto_w L13;
+				L5:	aload 4;
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					checkcast 0 83;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					aload_2;
+					sload_3;
+					sload 5;
+					invokeinterface 4 83 13;		// javacard/security/RSAPrivateCrtKey
+					goto L13;
+				L6:	aload 4;
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					checkcast 0 83;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					aload_2;
+					sload_3;
+					sload 5;
+					invokeinterface 4 83 12;		// javacard/security/RSAPrivateCrtKey
+					goto L13;
+				L7:	aload 4;
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					checkcast 0 83;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					aload_2;
+					sload_3;
+					sload 5;
+					invokeinterface 4 83 9;		// javacard/security/RSAPrivateCrtKey
+					goto L13;
+				L8:	aload 4;
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					checkcast 0 83;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					aload_2;
+					sload_3;
+					sload 5;
+					invokeinterface 4 83 10;		// javacard/security/RSAPrivateCrtKey
+					sspush 256;
+					sstore 6;
+					goto L13;
+				L9:	aload 4;
+					invokevirtual 80;		// getPublic()Ljavacard/security/PublicKey;
+					checkcast 0 81;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					aload_2;
+					sload_3;
+					sspush 256;
+					invokeinterface 4 81 7;		// javacard/security/RSAPublicKey
+					aload 4;
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					invokeinterface 1 84 3;		// javacard/security/PrivateKey
+					ifeq L11;
+				L10:	aload 4;
+					invokevirtual 80;		// getPublic()Ljavacard/security/PublicKey;
+					invokeinterface 1 85 3;		// javacard/security/PublicKey
+					ifne L12;
+				L11:	sspush 27012;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L12:	sload_3;
+					sspush 256;
+					sadd;
+					sreturn;
+				L13:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_5;
+					sload 6;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					sload_3;
+					sload 5;
+					sadd;
+					sreturn;
+		}
+
+		.method private getKey(B)Ljavacard/security/KeyPair; {
+			.stack 1;
+			.locals 0;
+
+			.descriptor	Ljavacard/security/KeyPair;	1.16;
+
+				L0:	sload_1;
+					slookupswitch L4 3 -92 L3 -74 L1 -72 L2;
+				L1:	getfield_a_this 20;		// reference net/ss3t/javacard/gpg/Gpg.signatureKey
+					areturn;
+				L2:	getfield_a_this 21;		// reference net/ss3t/javacard/gpg/Gpg.confidentialityKey
+					areturn;
+				L3:	getfield_a_this 22;		// reference net/ss3t/javacard/gpg/Gpg.authenticationKey
+					areturn;
+				L4:	sspush 27012;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+					getfield_a_this 20;		// reference net/ss3t/javacard/gpg/Gpg.signatureKey
+					areturn;
+		}
+
+		.method private addKeyPart([BS)S {
+			.stack 7;
+			.locals 0;
+
+				L0:	aload_0;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_4;
+					baload;
+					aload_1;
+					sload_2;
+					aload_0;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_3;
+					baload;
+					invokespecial 86;		// net/ss3t/javacard/gpg/Gpg.getKey(B)Ljavacard/security/KeyPair;
+					invokespecial 87;		// net/ss3t/javacard/gpg/Gpg.addKeyPart(B[BSLjavacard/security/KeyPair;)S
+					sreturn;
+		}
+
+		.method private putKey(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 8;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_1;
+					aaload;
+					invokevirtual 69;		// isValidated()Z
+					ifne L3;
+				L2:	sspush 27013;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	sconst_5;
+					aload_1;
+					invokevirtual 63;		// setIncomingAndReceive()S
+					sadd;
+					sstore_3;
+				L4:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					baload;
+					aload_2;
+					sconst_1;
+					baload;
+					if_scmpeq L6;
+				L5:	sconst_1;
+					goto L7;
+				L6:	sconst_0;
+				L7:	sstore 5;
+				L8:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					sconst_0;
+					bastore;
+					sload 5;
+					ifeq_w L20;
+				L9:	sload_3;
+					sconst_5;
+					getstatic_a 88;		// reference net/ss3t/javacard/gpg/Gpg.expectedRSAKeyImportFormat
+					arraylength;
+					sadd;
+					if_scmpge L11;
+				L10:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_3;
+					aload_2;
+					bspush 9;
+					baload;
+					bastore;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_5;
+					sconst_0;
+					bastore;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					bspush 6;
+					aload_2;
+					bspush 15;
+					baload;
+					dup_x 19;
+					bastore;
+					sstore 6;
+				L12:	aload_2;
+					bspush 9;
+					sconst_0;
+					bastore;
+					aload_2;
+					bspush 15;
+					sconst_0;
+					bastore;
+					aload_2;
+					bspush 7;
+					aload_2;
+					bspush 7;
+					invokestatic 39;		// javacard/framework/Util.getShort([BS)S
+					sload 6;
+					ssub;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					aload_2;
+					bspush 38;
+					aload_2;
+					bspush 38;
+					invokestatic 39;		// javacard/framework/Util.getShort([BS)S
+					sload 6;
+					ssub;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					aload_2;
+					sconst_5;
+					getstatic_a 88;		// reference net/ss3t/javacard/gpg/Gpg.expectedRSAKeyImportFormat
+					sconst_0;
+					getstatic_a 88;		// reference net/ss3t/javacard/gpg/Gpg.expectedRSAKeyImportFormat
+					arraylength;
+					invokestatic 89;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifeq L14;
+				L13:	sspush 27012;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L14:	sconst_5;
+					getstatic_a 88;		// reference net/ss3t/javacard/gpg/Gpg.expectedRSAKeyImportFormat
+					arraylength;
+					sadd;
+					sstore 4;
+				L15:	invokestatic 66;		// javacard/framework/JCSystem.beginTransaction()V
+					aload_0;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_3;
+					baload;
+					invokespecial 86;		// net/ss3t/javacard/gpg/Gpg.getKey(B)Ljavacard/security/KeyPair;
+					astore 7;
+				L16:	aload 7;
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					invokeinterface 1 84 0;		// javacard/security/PrivateKey
+					aload 7;
+					invokevirtual 80;		// getPublic()Ljavacard/security/PublicKey;
+					invokeinterface 1 85 0;		// javacard/security/PublicKey
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_3;
+					baload;
+					bspush -74;
+					if_scmpne L18;
+				L17:	getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_0;
+					sconst_0;
+					bastore;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_1;
+					sconst_0;
+					bastore;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_2;
+					sconst_0;
+					bastore;
+				L18:	invokestatic 67;		// javacard/framework/JCSystem.commitTransaction()V
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_4;
+					sconst_0;
+					bastore;
+				L19:	goto L21;
+				L20:	sconst_5;
+					sstore 4;
+				L21:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_1;
+					invokestatic 39;		// javacard/framework/Util.getShort([BS)S
+					sstore 6;
+				L22:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_4;
+					baload;
+					bspush 6;
+					if_scmpgt_w L40;
+				L23:	sload_3;
+					sload 4;
+					ssub;
+					sstore 7;
+				L24:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_5;
+					invokestatic 39;		// javacard/framework/Util.getShort([BS)S
+					sstore 8;
+				L25:	sload 6;
+					ifeq L35;
+				L26:	sload 7;
+					sload 6;
+					sadd;
+					sload 8;
+					if_scmple L29;
+				L27:	sload 8;
+					sload 6;
+					ssub;
+					sstore 9;
+				L28:	goto L30;
+				L29:	sload 7;
+					sstore 9;
+				L30:	aload_2;
+					sload 4;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sload 6;
+					bspush 7;
+					sadd;
+					sload 9;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload 6;
+					sload 9;
+					sadd;
+					sstore 6;
+					sload 6;
+					sload 8;
+					if_scmpne L32;
+				L31:	aload_0;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					bspush 7;
+					invokespecial 90;		// net/ss3t/javacard/gpg/Gpg.addKeyPart([BS)S
+					pop;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_1;
+					sconst_0;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					sconst_0;
+					sstore 6;
+					goto L33;
+				L32:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_1;
+					sload 6;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					bspush -37;
+					bastore;
+					return;
+				L33:	sload 4;
+					sload 9;
+					sadd;
+					sstore 4;
+				L34:	goto L38;
+				L35:	sload 7;
+					sload 8;
+					if_scmpge L37;
+				L36:	aload_2;
+					sload 4;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					bspush 7;
+					sload 7;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_1;
+					sload 7;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					bspush -37;
+					bastore;
+					return;
+				L37:	aload_0;
+					aload_2;
+					sload 4;
+					invokespecial 90;		// net/ss3t/javacard/gpg/Gpg.addKeyPart([BS)S
+					sstore 4;
+				L38:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_4;
+					dup2;
+					baload;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+				L39:	goto_w L22;
+				L40:	return;
+		}
+
+		.method private getChallenge(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	sload_3;
+					ifne L4;
+				L3:	sspush 256;
+					sstore_3;
+				L4:	getfield_a_this 24;		// reference net/ss3t/javacard/gpg/Gpg.randomData
+					aload_2;
+					sconst_0;
+					sload_3;
+					invokevirtual 91;		// generateData([BSS)V
+					aload_1;
+					sconst_0;
+					sload_3;
+					invokevirtual 49;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method private computeSignature(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L2:	sload_3;
+					sconst_4;
+					smul;
+					sspush 2560;
+					if_scmpgt L4;
+				L3:	aload_1;
+					invokevirtual 63;		// setIncomingAndReceive()S
+					sload_3;
+					if_scmpeq L5;
+				L4:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	getfield_a_this 4;		// reference net/ss3t/javacard/gpg/Gpg.pinSubmitted
+					sconst_0;
+					baload;
+					ifeq L7;
+				L6:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_0;
+					aaload;
+					invokevirtual 69;		// isValidated()Z
+					ifne L8;
+				L7:	sspush 27013;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L8:	getfield_a_this 20;		// reference net/ss3t/javacard/gpg/Gpg.signatureKey
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					invokeinterface 1 84 3;		// javacard/security/PrivateKey
+					ifne L10;
+				L9:	sspush 27266;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	getfield_b_this 19;		// byte net/ss3t/javacard/gpg/Gpg.pinValidForMultipleSignatures
+					ifne L12;
+				L11:	getfield_a_this 4;		// reference net/ss3t/javacard/gpg/Gpg.pinSubmitted
+					sconst_0;
+					sconst_0;
+					bastore;
+				L12:	getfield_a_this 23;		// reference net/ss3t/javacard/gpg/Gpg.cipherRSA
+					getfield_a_this 20;		// reference net/ss3t/javacard/gpg/Gpg.signatureKey
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					sconst_2;
+					invokevirtual 92;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 23;		// reference net/ss3t/javacard/gpg/Gpg.cipherRSA
+					aload_2;
+					sconst_5;
+					sload_3;
+					aload_2;
+					sconst_0;
+					invokevirtual 93;		// doFinal([BSS[BS)S
+					pop;
+					invokestatic 66;		// javacard/framework/JCSystem.beginTransaction()V
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_2;
+					baload;
+					sconst_m1;
+					if_scmpeq L14;
+				L13:	getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_2;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_2;
+					baload;
+					sspush 255;
+					sand;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+					goto L19;
+				L14:	getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_2;
+					sconst_0;
+					bastore;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_1;
+					baload;
+					sconst_m1;
+					if_scmpeq L16;
+				L15:	getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_1;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_1;
+					baload;
+					sspush 255;
+					sand;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+					goto L19;
+				L16:	getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_0;
+					baload;
+					sconst_m1;
+					if_scmpeq L18;
+				L17:	getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_1;
+					sconst_0;
+					bastore;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_0;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_0;
+					baload;
+					sspush 255;
+					sand;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+					goto L19;
+				L18:	invokestatic 94;		// javacard/framework/JCSystem.abortTransaction()V
+					sspush 27268;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L19:	invokestatic 67;		// javacard/framework/JCSystem.commitTransaction()V
+					aload_1;
+					sconst_0;
+					sspush 256;
+					invokevirtual 49;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method private decrypt(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_0;
+					aaload;
+					invokevirtual 69;		// isValidated()Z
+					ifeq L3;
+				L2:	getfield_a_this 4;		// reference net/ss3t/javacard/gpg/Gpg.pinSubmitted
+					sconst_1;
+					baload;
+					ifne L4;
+				L3:	sspush 27013;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	getfield_a_this 21;		// reference net/ss3t/javacard/gpg/Gpg.confidentialityKey
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					invokeinterface 1 84 3;		// javacard/security/PrivateKey
+					ifne L6;
+				L5:	sspush 27266;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					baload;
+					aload_2;
+					sconst_1;
+					baload;
+					if_scmpeq L8;
+				L7:	sconst_1;
+					goto L9;
+				L8:	sconst_0;
+				L9:	sstore_3;
+				L10:	aload_1;
+					invokevirtual 63;		// setIncomingAndReceive()S
+					sstore 4;
+				L11:	sload 4;
+					sconst_1;
+					if_scmpge L13;
+				L12:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L13:	sload_3;
+					ifeq L15;
+				L14:	aload_2;
+					bspush 6;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_5;
+					sload 4;
+					sconst_1;
+					ssub;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sinc 4 -1;
+					goto L19;
+				L15:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_3;
+					invokestatic 39;		// javacard/framework/Util.getShort([BS)S
+					sstore 5;
+				L16:	sload 4;
+					sload 5;
+					sadd;
+					sspush 256;
+					if_scmple L18;
+				L17:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L18:	aload_2;
+					sconst_5;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_5;
+					sload 5;
+					sadd;
+					sload 4;
+					invokestatic 70;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload 4;
+					sload 5;
+					sadd;
+					sstore 4;
+				L19:	sload 4;
+					sspush 256;
+					if_scmpge L21;
+				L20:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					bspush 42;
+					bastore;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_3;
+					sload 4;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					return;
+				L21:	getfield_a_this 23;		// reference net/ss3t/javacard/gpg/Gpg.cipherRSA
+					getfield_a_this 21;		// reference net/ss3t/javacard/gpg/Gpg.confidentialityKey
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					sconst_1;
+					invokevirtual 92;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 23;		// reference net/ss3t/javacard/gpg/Gpg.cipherRSA
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_5;
+					sspush 256;
+					aload_2;
+					sconst_0;
+					invokevirtual 93;		// doFinal([BSS[BS)S
+					sstore 4;
+					aload_1;
+					sconst_0;
+					sload 4;
+					invokevirtual 49;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method private internalAuthenticate(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_0;
+					aaload;
+					invokevirtual 69;		// isValidated()Z
+					ifeq L3;
+				L2:	getfield_a_this 4;		// reference net/ss3t/javacard/gpg/Gpg.pinSubmitted
+					sconst_1;
+					baload;
+					ifne L4;
+				L3:	sspush 27013;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	aload_1;
+					invokevirtual 63;		// setIncomingAndReceive()S
+					sstore_3;
+				L5:	sload_3;
+					bspush 102;
+					if_scmpgt L7;
+				L6:	sload_3;
+					aload_2;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					if_scmpeq L8;
+				L7:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L8:	getfield_a_this 22;		// reference net/ss3t/javacard/gpg/Gpg.authenticationKey
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					invokeinterface 1 84 3;		// javacard/security/PrivateKey
+					ifne L10;
+				L9:	sspush 27266;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	getfield_a_this 23;		// reference net/ss3t/javacard/gpg/Gpg.cipherRSA
+					getfield_a_this 22;		// reference net/ss3t/javacard/gpg/Gpg.authenticationKey
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					sconst_2;
+					invokevirtual 92;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 23;		// reference net/ss3t/javacard/gpg/Gpg.cipherRSA
+					aload_2;
+					sconst_5;
+					sload_3;
+					aload_2;
+					sconst_0;
+					invokevirtual 93;		// doFinal([BSS[BS)S
+					pop;
+					aload_1;
+					sconst_0;
+					sspush 256;
+					invokevirtual 49;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method private generateAsymetricKey(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	aload_1;
+					invokevirtual 63;		// setIncomingAndReceive()S
+					sconst_1;
+					if_scmpeq L3;
+				L2:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload_0;
+					aload_2;
+					sconst_5;
+					baload;
+					invokespecial 86;		// net/ss3t/javacard/gpg/Gpg.getKey(B)Ljavacard/security/KeyPair;
+					astore_3;
+				L4:	aload_2;
+					sconst_2;
+					baload;
+					bspush -127;
+					if_scmpne L7;
+				L5:	aload_3;
+					invokevirtual 80;		// getPublic()Ljavacard/security/PublicKey;
+					invokeinterface 1 85 3;		// javacard/security/PublicKey
+					ifne L12;
+				L6:	sspush 27266;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+					goto L12;
+				L7:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_1;
+					aaload;
+					invokevirtual 69;		// isValidated()Z
+					ifne L9;
+				L8:	sspush 27013;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	invokestatic 66;		// javacard/framework/JCSystem.beginTransaction()V
+					aload_3;
+					invokevirtual 95;		// genKeyPair()V
+					aload_2;
+					sconst_5;
+					baload;
+					bspush -74;
+					if_scmpne L11;
+				L10:	getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_0;
+					sconst_0;
+					bastore;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_1;
+					sconst_0;
+					bastore;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_2;
+					sconst_0;
+					bastore;
+				L11:	invokestatic 67;		// javacard/framework/JCSystem.commitTransaction()V
+				L12:	aload_2;
+					sconst_5;
+					bspush 127;
+					bastore;
+					aload_2;
+					bspush 6;
+					bspush 73;
+					bastore;
+					aload_2;
+					bspush 7;
+					bspush -126;
+					bastore;
+					aload_2;
+					bspush 10;
+					bspush -126;
+					bastore;
+					aload_3;
+					invokevirtual 80;		// getPublic()Ljavacard/security/PublicKey;
+					checkcast 0 81;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					aload_2;
+					bspush 12;
+					invokeinterface 3 81 4;		// javacard/security/RSAPublicKey
+					sstore 4;
+				L13:	aload_2;
+					bspush 11;
+					sload 4;
+					s2b;
+					bastore;
+					bspush 12;
+					sload 4;
+					sadd;
+					sstore 5;
+				L14:	aload_2;
+					sload 5;
+					bspush -127;
+					bastore;
+					aload_2;
+					sload 5;
+					sconst_1;
+					sadd;
+					bspush -126;
+					bastore;
+					aload_2;
+					sload 5;
+					sconst_2;
+					sadd;
+					sspush 256;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					aload_2;
+					bspush 8;
+					sload 5;
+					sspush 256;
+					sadd;
+					sconst_5;
+					ssub;
+					sconst_1;
+					ssub;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					aload_1;
+					sconst_5;
+					sload 4;
+					bspush 11;
+					sadd;
+					invokevirtual 49;		// setOutgoingAndSend(SS)V
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_3;
+					sspush 256;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					aload_3;
+					invokevirtual 80;		// getPublic()Ljavacard/security/PublicKey;
+					checkcast 0 81;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_5;
+					invokeinterface 3 81 5;		// javacard/security/RSAPublicKey
+					pop;
+					getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_5;
+					baload;
+					ifne L16;
+				L15:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_1;
+					bspush 6;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					goto L17;
+				L16:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_1;
+					sconst_5;
+					invokestatic 43;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+				L17:	getfield_a_this 5;		// reference net/ss3t/javacard/gpg/Gpg.commandChainingBuffer
+					sconst_0;
+					aload_2;
+					sconst_1;
+					baload;
+					bastore;
+					sspush 24832;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+					return;
+		}
+
+		.method private terminateDF(Ljavacard/framework/APDU;)V {
+			.stack 2;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 38;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_4;
+					baload;
+					ifeq L3;
+				L2:	sspush 26368;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_0;
+					aaload;
+					invokevirtual 64;		// getTriesRemaining()B
+					ifgt L5;
+				L4:	getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_1;
+					aaload;
+					invokevirtual 64;		// getTriesRemaining()B
+					ifle L6;
+				L5:	sspush 27013;
+					invokestatic 44;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	aload_0;
+					sconst_1;
+					putfield_b 1;		// boolean net/ss3t/javacard/gpg/Gpg.terminated
+					return;
+		}
+
+		.method private activateFile(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getfield_b_this 1;		// boolean net/ss3t/javacard/gpg/Gpg.terminated
+					ifne L2;
+				L1:	return;
+				L2:	getfield_a_this 20;		// reference net/ss3t/javacard/gpg/Gpg.signatureKey
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					invokeinterface 1 84 0;		// javacard/security/PrivateKey
+					getfield_a_this 20;		// reference net/ss3t/javacard/gpg/Gpg.signatureKey
+					invokevirtual 80;		// getPublic()Ljavacard/security/PublicKey;
+					invokeinterface 1 85 0;		// javacard/security/PublicKey
+					getfield_a_this 21;		// reference net/ss3t/javacard/gpg/Gpg.confidentialityKey
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					invokeinterface 1 84 0;		// javacard/security/PrivateKey
+					getfield_a_this 21;		// reference net/ss3t/javacard/gpg/Gpg.confidentialityKey
+					invokevirtual 80;		// getPublic()Ljavacard/security/PublicKey;
+					invokeinterface 1 85 0;		// javacard/security/PublicKey
+					getfield_a_this 22;		// reference net/ss3t/javacard/gpg/Gpg.authenticationKey
+					invokevirtual 82;		// getPrivate()Ljavacard/security/PrivateKey;
+					invokeinterface 1 84 0;		// javacard/security/PrivateKey
+					getfield_a_this 22;		// reference net/ss3t/javacard/gpg/Gpg.authenticationKey
+					invokevirtual 80;		// getPublic()Ljavacard/security/PublicKey;
+					invokeinterface 1 85 0;		// javacard/security/PublicKey
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_0;
+					aaload;
+					getfield_a_this 0;		// reference net/ss3t/javacard/gpg/Gpg.defaultPIN
+					sconst_0;
+					bspush 6;
+					invokevirtual 25;		// update([BSB)V
+					getfield_a_this 2;		// reference net/ss3t/javacard/gpg/Gpg.pinLength
+					sconst_0;
+					bspush 6;
+					bastore;
+					getfield_a_this 3;		// reference net/ss3t/javacard/gpg/Gpg.pins
+					sconst_1;
+					aaload;
+					getfield_a_this 0;		// reference net/ss3t/javacard/gpg/Gpg.defaultPIN
+					sconst_0;
+					bspush 8;
+					invokevirtual 25;		// update([BSB)V
+					getfield_a_this 2;		// reference net/ss3t/javacard/gpg/Gpg.pinLength
+					sconst_1;
+					bspush 8;
+					bastore;
+					getfield_a_this 2;		// reference net/ss3t/javacard/gpg/Gpg.pinLength
+					sconst_2;
+					sconst_0;
+					bastore;
+					getfield_a_this 6;		// reference net/ss3t/javacard/gpg/Gpg.privateDO1
+					sconst_0;
+					getfield_a_this 6;		// reference net/ss3t/javacard/gpg/Gpg.privateDO1
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 7;		// reference net/ss3t/javacard/gpg/Gpg.privateDO2
+					sconst_0;
+					getfield_a_this 7;		// reference net/ss3t/javacard/gpg/Gpg.privateDO2
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 8;		// reference net/ss3t/javacard/gpg/Gpg.privateDO3
+					sconst_0;
+					getfield_a_this 8;		// reference net/ss3t/javacard/gpg/Gpg.privateDO3
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 9;		// reference net/ss3t/javacard/gpg/Gpg.privateDO4
+					sconst_0;
+					getfield_a_this 9;		// reference net/ss3t/javacard/gpg/Gpg.privateDO4
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 10;		// reference net/ss3t/javacard/gpg/Gpg.loginData
+					sconst_0;
+					getfield_a_this 10;		// reference net/ss3t/javacard/gpg/Gpg.loginData
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 11;		// reference net/ss3t/javacard/gpg/Gpg.url
+					sconst_0;
+					getfield_a_this 11;		// reference net/ss3t/javacard/gpg/Gpg.url
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 12;		// reference net/ss3t/javacard/gpg/Gpg.name
+					sconst_0;
+					getfield_a_this 12;		// reference net/ss3t/javacard/gpg/Gpg.name
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 13;		// reference net/ss3t/javacard/gpg/Gpg.language
+					sconst_0;
+					getfield_a_this 13;		// reference net/ss3t/javacard/gpg/Gpg.language
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 14;		// reference net/ss3t/javacard/gpg/Gpg.sex
+					sconst_0;
+					sconst_0;
+					bastore;
+					getfield_a_this 15;		// reference net/ss3t/javacard/gpg/Gpg.fingerprints
+					sconst_0;
+					getfield_a_this 15;		// reference net/ss3t/javacard/gpg/Gpg.fingerprints
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 16;		// reference net/ss3t/javacard/gpg/Gpg.caFingerprints
+					sconst_0;
+					getfield_a_this 16;		// reference net/ss3t/javacard/gpg/Gpg.caFingerprints
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 17;		// reference net/ss3t/javacard/gpg/Gpg.generationDates
+					sconst_0;
+					getfield_a_this 17;		// reference net/ss3t/javacard/gpg/Gpg.generationDates
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					sconst_0;
+					getfield_a_this 18;		// reference net/ss3t/javacard/gpg/Gpg.signatureCounter
+					arraylength;
+					sconst_0;
+					invokestatic 45;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_0;
+					sconst_0;
+					putfield_b 19;		// byte net/ss3t/javacard/gpg/Gpg.pinValidForMultipleSignatures
+					aload_0;
+					sconst_0;
+					putfield_b 1;		// boolean net/ss3t/javacard/gpg/Gpg.terminated
+					return;
+		}
+
+	}
+
+}

@@ -1,0 +1,11 @@
+<JavaCardProject name="">
+<USER>
+<PKG name="net.ss3t.javacard.gpg" aid="D2 76 00 01 24 01 02 00 00 00 00 00 00 00 00" major="0" minor="0">
+<APPLET aid="D2 76 00 01 24 01 02 00 00 00 00 00 00 00 00 00" instanceaid="" parameter="00" authority="00" privileges="--------" index="-21024" name="Gpg"/>
+</PKG>
+<Libs/>
+</USER>
+<DebugInfo>
+<Protocol name="T01"/>
+</DebugInfo>
+</JavaCardProject>

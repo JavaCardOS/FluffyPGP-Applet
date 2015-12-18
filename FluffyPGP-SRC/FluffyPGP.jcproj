@@ -1,0 +1,8 @@
+<JavaCardProject name="FluffyPGP">
+<USER>
+<PKG name="net.ss3t.javacard.gpg" aid="D2 76 00 01 24 01 02 00 00 00 00 00 00 00 00" major="1" minor="0">
+<APPLET aid="D2 76 00 01 24 01 02 00 00 00 00 00 00 00 00 00" instanceaid="" parameter="" authority="" privileges="" index="-8296" name="Gpg"/>
+</PKG>
+<Libs/>
+</USER>
+</JavaCardProject>
